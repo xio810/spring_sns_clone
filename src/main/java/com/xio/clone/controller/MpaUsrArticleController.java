@@ -55,6 +55,18 @@ public class MpaUsrArticleController {
 		return new ResultData("S-1", article.getId() + "번 글 입니다.", "article", article);
 	}
 
+	@RequestMapping("/usr/article/doDelete")
+	@ResponseBody
+	public ResultData doDelete(int id) {
+		Article article = getArticleById(id);
+
+		if (article == null) {
+			return new ResultData("F-1", id + "번 글은 존재하지 않습니다.", "id", id);
+		}
+
+		return new ResultData("S-1", article.getId() + "번 글이 삭제되었습니다.", "article", article);
+	}
+
 	private Article getArticleById(int id) {
 		for (Article article : articles) {
 			if (article.getId() == id) {

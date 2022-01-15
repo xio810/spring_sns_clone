@@ -19,6 +19,7 @@ public class MpaUsrArticleController {
 	public MpaUsrArticleController() {
 		articles = new ArrayList<>();
 		articleLastId = 0;
+		makeTestData();
 	}
 
 	@RequestMapping("/usr/article/doWrite")
@@ -86,5 +87,11 @@ public class MpaUsrArticleController {
 		}
 
 		return null;
+	}
+
+	private void makeTestData() {
+		for (int i = 0; i < 3; i++) {
+			writeArticle("제목1", "내용1");
+		}
 	}
 }

@@ -1,75 +1,53 @@
 package com.xio.clone.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.xio.clone.dao.ArticleDao;
 import com.xio.clone.dto.Article;
-import com.xio.clone.util.Util;
+import com.xio.clone.dto.ResultData;
 
 @Service
 public class ArticleService {
+	
+	@Autowired
+	private ArticleDao articleDao;
 
-	private int lastInsertId;
-	private List<Article> articles;
-
-	public ArticleService() {
-		lastInsertId = 0;
-		articles = new ArrayList<>();
-		makeTestData();
+	public ResultData writeArticle(String title, String body) {
+		
+		int id = articleDao.writeArticle(title,body);
+		
+		return new ResultData("S-1", id + "게시물이 작성되었습니다.", "id", id);
 	}
 
-	public boolean deleteArticle(Integer id) {
-		Article article = getArticleById(id);
+	public ResultData modifyArticle(Integer id, String title, String body) {
+		
+		Article article = articleDao.getArticleById(id);
+		
 		if (article == null) {
-			return false;
+			return new ResultData("F-1", "게시물이 없습니다.");
 		}
-		articles.remove(article);
-		return true;
+		
+		articleDao.modifyArticle(id,title,body);
+		
+		return new ResultData("S-1", id + "번 게시물이 수정되었습니다.", "article",article);
 	}
 
-	public boolean modifyArticle(int id, String title, String body) {
-		Article article = getArticleById(id);
-
-		if (article == null) {
-			return false;
+	public ResultData deleteArticle(Integer id) {
+		Article article = articleDao.getArticleById(id);
+		
+		if(article == null) {
+			return new ResultData("F-1", "게시물이 없습니다.");
 		}
-
-		article.setUpdateDate(Util.getNowDateStr());
-		article.setTitle(title);
-		article.setBody(body);
-
-		return true;
+		
+		articleDao.deleteArticle(id);
+		
+		return new ResultData("S-1", id + "번 게시물이 삭제되었습니다.", "id", id);
 	}
 
-	public int writeArticle(String title, String body) {
-		int id = lastInsertId + 1;
-
-		String regDate = Util.getNowDateStr();
-		String updateDate = Util.getNowDateStr();
-
-		Article article = new Article(id, regDate, updateDate, title, body);
-		articles.add(article);
-
-		lastInsertId = id;
-
-		return id;
-	}
-
-	public Article getArticleById(int id) {
-		for (Article article : articles) {
-			if (article.getId() == id) {
-				return article;
-			}
-		}
-		return null;
-	}
-
-	public void makeTestData() {
-		for (int i = 1; i < 4; i++) {
-			writeArticle("title" + i, "body" + i);
-		}
+	public Article getArticleById(Integer id) {
+		
+		return articleDao.getArticleById(id);
 	}
 
 }

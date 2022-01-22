@@ -9,45 +9,14 @@ import com.xio.clone.dto.ResultData;
 
 @Service
 public class ArticleService {
-	
 	@Autowired
 	private ArticleDao articleDao;
 
 	public ResultData writeArticle(String title, String body) {
-		
-		int id = articleDao.writeArticle(title,body);
-		
-		return new ResultData("S-1", id + "게시물이 작성되었습니다.", "id", id);
-	}
 
-	public ResultData modifyArticle(Integer id, String title, String body) {
-		
-		Article article = articleDao.getArticleById(id);
-		
-		if (article == null) {
-			return new ResultData("F-1", "게시물이 없습니다.");
-		}
-		
-		articleDao.modifyArticle(id,title,body);
-		
-		return new ResultData("S-1", id + "번 게시물이 수정되었습니다.", "article",article);
-	}
+		int id = articleDao.writeArticle(title, body);
 
-	public ResultData deleteArticle(Integer id) {
-		Article article = articleDao.getArticleById(id);
-		
-		if(article == null) {
-			return new ResultData("F-1", "게시물이 없습니다.");
-		}
-		
-		articleDao.deleteArticle(id);
-		
-		return new ResultData("S-1", id + "번 게시물이 삭제되었습니다.", "id", id);
-	}
-
-	public Article getArticleById(Integer id) {
-		
-		return articleDao.getArticleById(id);
+		return new ResultData("S-1", id + " 번 게시물 등록.", "id", id);
 	}
 
 }

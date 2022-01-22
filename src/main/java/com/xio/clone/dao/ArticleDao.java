@@ -1,70 +1,17 @@
 package com.xio.clone.dao;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.stereotype.Component;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.xio.clone.dto.Article;
-import com.xio.clone.util.Util;
 
-@Component
-public class ArticleDao {
+@Mapper
+public interface ArticleDao {
+	boolean modifyArticle(@Param("id") int id, @Param("title") String title, @Param("body") String body);
 
-	private int lastInsertId;
-	private List<Article> articles;
+	void writeArticle(@Param("boardId") int boardId, @Param("memberId") int memberId, @Param("title") String title, @Param("body") String body);
 
-	public ArticleDao() {
-		lastInsertId = 0;
-		articles = new ArrayList<>();
-		makeTestData();
-	}
+	Article getArticleById(@Param("id") int id);
 
-	private void makeTestData() {
-		for (int i =1; i < 4; i ++) {
-			writeArticle(i+"title", i+"body");
-		}
-	}
-
-	public int writeArticle(String title, String body) {
-		int id = lastInsertId + 1;
-		String regDate = Util.getNowDateStr();
-		String updateDate = Util.getNowDateStr();
-		
-		Article article = new Article(id, regDate, updateDate, title, body);
-		articles.add(article);
-		
-		lastInsertId = id;
-		
-		return id;
-	}
-	
-	public Article getArticleById(Integer id) {
-		for(Article article : articles) {
-			if (article.getId() == id) {
-				return article;
-			}
-		}
-		return null;
-	}
-
-	public boolean modifyArticle(Integer id, String title, String body) {
-		Article article = getArticleById(id);
-		
-		article.setUpdateDate(Util.getNowDateStr());
-		article.setTitle(title);
-		article.setBody(body);
-		
-		return true;
-	}
-
-	public boolean deleteArticle(Integer id) {
-		
-		Article article = getArticleById(id);
-		
-		articles.remove(article);
-		
-		return true;
-	}
-
+	void deleteArticle(@Param("id") int id);
 }

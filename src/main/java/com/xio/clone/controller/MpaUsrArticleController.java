@@ -59,11 +59,7 @@ public class MpaUsrArticleController {
 
 	@RequestMapping("/usr/article/getArticle")
 	@ResponseBody
-	public ResultData getArticle(Integer id) {
-
-		if (id == null) {
-			return new ResultData("F-1", "번호를 입력해주세요.");
-		}
+	public Article getArticle(Integer id) {
 
 		return articleService.getArticleById(id);
 	}

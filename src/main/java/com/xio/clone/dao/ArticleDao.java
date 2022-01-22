@@ -17,6 +17,13 @@ public class ArticleDao {
 	public ArticleDao() {
 		lastInsertId = 0;
 		articles = new ArrayList<>();
+		makeTestData();
+	}
+
+	private void makeTestData() {
+		for (int i =1; i < 4; i ++) {
+			writeArticle(i+"title", i+"body");
+		}
 	}
 
 	public int writeArticle(String title, String body) {
@@ -30,6 +37,34 @@ public class ArticleDao {
 		lastInsertId = id;
 		
 		return id;
+	}
+	
+	public Article getArticleById(Integer id) {
+		for(Article article : articles) {
+			if (article.getId() == id) {
+				return article;
+			}
+		}
+		return null;
+	}
+
+	public boolean modifyArticle(Integer id, String title, String body) {
+		Article article = getArticleById(id);
+		
+		article.setUpdateDate(Util.getNowDateStr());
+		article.setTitle(title);
+		article.setBody(body);
+		
+		return true;
+	}
+
+	public boolean deleteArticle(Integer id) {
+		
+		Article article = getArticleById(id);
+		
+		articles.remove(article);
+		
+		return true;
 	}
 
 }

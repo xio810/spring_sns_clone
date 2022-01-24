@@ -35,5 +35,9 @@
 				delDate = NOW()
 				WHERE id = #{id}
 		</update>
+		
+		<select id="getLastInsertId" resultType="int">
+			SELECT LAST_INSERT_ID()
+		</select>
 
 </mapper>

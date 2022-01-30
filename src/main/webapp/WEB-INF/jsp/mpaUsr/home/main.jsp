@@ -19,12 +19,81 @@
 
 <link rel="stylesheet" href="/resource/common.css" />
 <script src="/resource/common.js" defer></script>
-<title>안녕</title>
+<title>INSTA</title>
 </head>
 <body>
-  <i class="fas fa-angle-up"></i>
-  <br />
-  <button class="btn; btn-primary" onclick="hello();">안녕하세요.</button>
-  <div class="background-color; bg-blue-100">폰트확인</div>
+  <div class="site-wrap">
+    <header class="top-bar top-bar--fly">
+      <div class="container mx-auto flex h-full">
+        <a href="#" class="px-3 flex items-center">
+          <span>
+            <i class="fas fa-lemon"></i>
+          </span>
+          <span class="hidden sm:block">&nbsp;INSTA</span>
+        </a>
+
+        <div class="flex-grow"></div>
+
+        <nav class="menu-box-1">
+          <ul class="flex h-full">
+            <li>
+              <a href="#" class="h-full flex items-center px-5">
+                <span>
+                  <i class="fas fa-home"></i>
+                </span>
+                <span class="hidden sm:block">&nbsp;HOME</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="h-full flex items-center px-5">
+                <span>
+                  <i class="far fa-newspaper"></i>
+                </span>
+                <span class="hidden md:block">&nbsp;BOARD</span>
+              </a>
+              <div>
+                <h1>
+                  <a href="#">
+                    <span>
+                      <i class="far fa-newspaper"></i>
+                    </span>
+                    <span>&nbsp;BOARD</span>
+                  </a>
+                </h1>
+                <ul>
+                  <li>
+                    <a href="#">
+                      <span>
+                        <i class="far fa-clipboard"></i>
+                      </span>
+                      <span>&nbsp;NOTICE</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span>
+                        <i class="far fa-clipboard"></i>
+                      </span>
+                      <span>&nbsp;FREE</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a href="#" class="h-full flex items-center px-5">
+                <span>
+                  <i class="fas fa-sign-out-alt"></i>
+                </span>
+                <span class="hidden md:block">&nbsp;SIGN OUT</span>
+              </a>
+              <div></div>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+    </header>
+  </div>
 </body>
 </html>

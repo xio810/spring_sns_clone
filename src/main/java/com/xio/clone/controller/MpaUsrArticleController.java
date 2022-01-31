@@ -15,6 +15,11 @@ public class MpaUsrArticleController {
 	@Autowired
 	private ArticleService articleService;
 
+	@RequestMapping("/mpaUsr/article/list")
+	public String showList(int boardId) {
+		return "mpaUsr/article/list";
+	}
+
 	@RequestMapping("/usr/article/doWrite")
 	@ResponseBody
 	public ResultData doWrite(String title, String body) {

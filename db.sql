@@ -1,7 +1,7 @@
 # DB 생성
-DROP DATABASE IF EXISTS insta;
-CREATE DATABASE insta;
-USE insta;
+DROP DATABASE IF EXISTS sns_clone;
+CREATE DATABASE sns_clone;
+USE sns_clone;
 
 # 게시물 테이블 생성
 CREATE TABLE article (

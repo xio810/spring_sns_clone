@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.xio.clone.dao.ArticleDao;
 import com.xio.clone.dto.Article;
+import com.xio.clone.dto.Board;
 import com.xio.clone.dto.ResultData;
 
 @Service
@@ -56,5 +57,10 @@ public class ArticleService {
 			return true;
 		}
 		return false;
+	}
+
+	public Board getBoardById(int id) {
+		
+		return articleDao.getBoardById(id);
 	}
 }

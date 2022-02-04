@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import com.xio.clone.dto.Article;
+import com.xio.clone.dto.Board;
 
 @Mapper
 public interface ArticleDao {
@@ -16,4 +17,6 @@ public interface ArticleDao {
 	void deleteArticle(@Param("id") int id);
 	
 	int getLastInsertId();
+
+	Board getBoardById(@Param("id") int id);
 }

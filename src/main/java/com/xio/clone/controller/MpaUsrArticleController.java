@@ -1,9 +1,8 @@
 package com.xio.clone.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -19,14 +18,14 @@ public class MpaUsrArticleController {
 	private ArticleService articleService;
 
 	@RequestMapping("/mpaUsr/article/list")
-	public String showList(HttpServletRequest req, int boardId) {
+	public String showList(Model model, int boardId) {
 		Board board = articleService.getBoardById(boardId);
 
 		if (board == null) {
 			return "존재하지 않는 게시판 입니다.";
 		}
 		
-		req.setAttribute("board", board);
+		model.addAttribute("board", board);
 		
 		return "mpaUsr/article/list";
 	}

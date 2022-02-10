@@ -6,5 +6,5 @@ const alertMsg = '${msg}'.trim();
 if ( alertMsg ) {
   alert(alertMsg);
 }
-//history.back();
+history.back();
 </script> 

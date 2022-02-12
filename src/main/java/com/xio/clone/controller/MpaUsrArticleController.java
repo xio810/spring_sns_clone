@@ -17,15 +17,19 @@ import com.xio.clone.util.Util;
 public class MpaUsrArticleController {
 	@Autowired
 	private ArticleService articleService;
-
+	
+	//알림 후 뒤로가기 
 	private String msgAndBack(HttpServletRequest req, String msg) {
 		req.setAttribute("msg", msg);
+		//historyBack이 true면 실행 
 		req.setAttribute("historyBack", true);
+		
 		return "common/redirect";
 	}
-
+	//알림 후 게시판번호로 이동 
 	private String msgAndReplace(HttpServletRequest req, String msg, String replaceUrl) {
 		req.setAttribute("msg", msg);
+		//boardId에 맞는 게시판번호로 이동 
 		req.setAttribute("replaceUrl", replaceUrl);
 
 		return "common/redirect";
@@ -40,6 +44,10 @@ public class MpaUsrArticleController {
 		}
 
 		req.setAttribute("board", board);
+		
+		int totalItemsCount = articleService.getArticlesTotalCount(boardId);
+		
+		req.setAttribute("totalItemsCount", totalItemsCount);
 
 		return "mpaUsr/article/list";
 	}

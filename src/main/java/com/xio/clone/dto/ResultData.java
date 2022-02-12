@@ -17,7 +17,8 @@ public class ResultData {
 		this.msg = msg;
 		this.body = Util.mapOf(args);
 	}
-
+	
+	//S-로 시작되는 것들은 성공으로 간주 
 	public boolean isSuccess() {
 		return resultCode.startsWith("S-");
 	}

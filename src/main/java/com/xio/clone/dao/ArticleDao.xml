@@ -43,9 +43,16 @@
 
 		<select id="getBoardById" resultType="Board">
 				SELECT *
-				FROM Board AS B
+				FROM board AS B
 				WHERE B.id = #{id}
 				AND B.delStatus = 0
+		</select>
+
+		<select id="getArticlesTotalCount" resultType="int">
+				SELECT COUNT(*) AS cnt
+				FROM article AS A
+				WHERE A.boardId = #{boardId}
+				AND A.delStatus = 0
 		</select>
 
 </mapper>

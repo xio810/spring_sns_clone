@@ -1,5 +1,7 @@
 package com.xio.clone.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,9 +42,9 @@ public class ArticleService {
 	public ResultData writeArticle(String title, String body) {
 		int boardId = 2; // 가짜 데이터
 		int memberId = 3; // 가짜 데이터
-		
+
 		articleDao.writeArticle(boardId, memberId, title, body);
-		
+
 		int id = articleDao.getLastInsertId();
 
 		return new ResultData("S-1", "게시물이 작성되었습니다.", "id", id);
@@ -60,12 +62,21 @@ public class ArticleService {
 	}
 
 	public Board getBoardById(int id) {
-		
+
 		return articleDao.getBoardById(id);
 	}
 
 	public int getArticlesTotalCount(int boardId) {
-		
+
 		return articleDao.getArticlesTotalCount(boardId);
+	}
+
+	public List<Article> getForPrintArticles(int boardId, int itemsCountInAPage, int page) {
+		
+		//page가 1이면 0부터 시작, page가 2이면 20부터 시작 
+		int limitFrom = (page - 1) * itemsCountInAPage;
+		int limitTake = itemsCountInAPage;
+		
+		return articleDao.getForPrintArticles(boardId, limitFrom, limitTake);
 	}
 }

@@ -16,7 +16,10 @@ import com.xio.clone.dto.ResultData;
 import com.xio.clone.service.ArticleService;
 import com.xio.clone.util.Util;
 
+import lombok.extern.slf4j.Slf4j;
+
 @Controller
+@Slf4j
 public class MpaUsrArticleController {
 	@Autowired
 	private ArticleService articleService;
@@ -41,9 +44,14 @@ public class MpaUsrArticleController {
 
 	// @RequestParam(defaultValue = "1") int page => page값을 입력하지 않아도 기본으로 1이 들어가있게
 	@RequestMapping("/mpaUsr/article/list")
-	public String showList(HttpServletRequest req, int boardId, @RequestParam(defaultValue = "1") int page) {
+	public String showList(HttpServletRequest req, @RequestParam(defaultValue = "1") int boardId, String searchKeyword,
+			@RequestParam(defaultValue = "1") int page) {
 		Board board = articleService.getBoardById(boardId);
-
+		
+		//개발모드일때는 콘솔에 출력되나 실행모드일 때는 출력되지 않음. app~.yml에서 debug를 info로 바꾸면 뜨지않음.
+		//syso와 같으나 log는 더 자세하게 콘솔에 나옴 
+		log.debug("searchKeyword : " + searchKeyword);
+		
 		if (board == null) {
 			return msgAndBack(req, boardId + "번 게시판은 없습니다.");
 		}

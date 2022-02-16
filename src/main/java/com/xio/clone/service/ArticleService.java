@@ -66,17 +66,17 @@ public class ArticleService {
 		return articleDao.getBoardById(id);
 	}
 
-	public int getArticlesTotalCount(int boardId) {
+	public int getArticlesTotalCount(int boardId, String searchKeyword) {
 
-		return articleDao.getArticlesTotalCount(boardId);
+		return articleDao.getArticlesTotalCount(boardId, searchKeyword);
 	}
 
-	public List<Article> getForPrintArticles(int boardId, int itemsCountInAPage, int page) {
+	public List<Article> getForPrintArticles(int boardId, String searchKeyword, int itemsCountInAPage, int page) {
 		
 		//page가 1이면 0부터 시작, page가 2이면 20부터 시작 
 		int limitFrom = (page - 1) * itemsCountInAPage;
 		int limitTake = itemsCountInAPage;
 		
-		return articleDao.getForPrintArticles(boardId, limitFrom, limitTake);
+		return articleDao.getForPrintArticles(boardId, searchKeyword, limitFrom, limitTake);
 	}
 }

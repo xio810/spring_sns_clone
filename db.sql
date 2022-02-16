@@ -109,3 +109,11 @@ SET regDate = NOW(),
 updateDate = NOW(),
 `name` = 'FREE',
 `code` = 'free';
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+boardId = 1,
+memberId = 2,
+title = '가나목4',
+`body` = '본문4';

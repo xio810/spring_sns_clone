@@ -66,17 +66,26 @@ public class ArticleService {
 		return articleDao.getBoardById(id);
 	}
 
-	public int getArticlesTotalCount(int boardId, String searchKeyword) {
+	public int getArticlesTotalCount(int boardId, String searchKeywordTypeCode, String searchKeyword) {
+
+		if (searchKeyword != null && searchKeyword.length() == 0) {
+			searchKeyword = null;
+		}
 
 		return articleDao.getArticlesTotalCount(boardId, searchKeyword);
 	}
 
-	public List<Article> getForPrintArticles(int boardId, String searchKeyword, int itemsCountInAPage, int page) {
-		
-		//page가 1이면 0부터 시작, page가 2이면 20부터 시작 
+	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword,
+			int itemsCountInAPage, int page) {
+
+		if (searchKeyword != null && searchKeyword.length() == 0) {
+			searchKeyword = null;
+		}
+
+		// page가 1이면 0부터 시작, page가 2이면 20부터 시작
 		int limitFrom = (page - 1) * itemsCountInAPage;
 		int limitTake = itemsCountInAPage;
-		
+
 		return articleDao.getForPrintArticles(boardId, searchKeyword, limitFrom, limitTake);
 	}
 }

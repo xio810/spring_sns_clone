@@ -46,8 +46,8 @@ public class MpaUsrArticleController {
 	// list에서 받는 데이터들 -> servlet req, boardId, searchKeywordType, searchKeyword,
 	// page번호
 	@RequestMapping("/mpaUsr/article/list")
-	public String showList(HttpServletRequest req, @RequestParam(defaultValue = "1") int boardId, String searchKeyword,
-			@RequestParam(defaultValue = "1") int page) {
+	public String showList(HttpServletRequest req, @RequestParam(defaultValue = "1") int boardId,
+			String searchKeywordType, String searchKeyword, @RequestParam(defaultValue = "1") int page) {
 		Board board = articleService.getBoardById(boardId);
 
 		// 개발모드일때는 콘솔에 출력되나 실행모드일 때는 출력되지 않음. app~.yml에서 debug를 info로 바꾸면 뜨지않음.
@@ -55,9 +55,9 @@ public class MpaUsrArticleController {
 		log.debug("searchKeyword : " + searchKeyword);
 
 		// titleAndBody -> 제목+내용
-//		if (Util.isEmpty(searchKeywordType)) {
-//			searchKeywordType = "titleAndBody";
-//		}
+		if (Util.isEmpty(searchKeywordType)) {
+			searchKeywordType = "titleAndBody";
+		}
 
 		if (board == null) {
 			return msgAndBack(req, boardId + "번 게시판은 없습니다.");
@@ -65,7 +65,7 @@ public class MpaUsrArticleController {
 
 		req.setAttribute("board", board);
 		// 총 게시물 개수
-		int totalItemsCount = articleService.getArticlesTotalCount(boardId, searchKeyword);
+		int totalItemsCount = articleService.getArticlesTotalCount(boardId, searchKeywordType, searchKeyword);
 
 		if (searchKeyword == null || searchKeyword.trim().length() == 0) {
 
@@ -81,7 +81,8 @@ public class MpaUsrArticleController {
 		req.setAttribute("page", page);
 		req.setAttribute("totalPage", totalPage);
 
-		List<Article> articles = articleService.getForPrintArticles(boardId, searchKeyword, itemsCountInAPage, page);
+		List<Article> articles = articleService.getForPrintArticles(boardId, searchKeywordType, searchKeyword,
+				itemsCountInAPage, page);
 
 		req.setAttribute("articles", articles);
 

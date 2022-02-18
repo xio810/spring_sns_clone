@@ -72,7 +72,7 @@ public class ArticleService {
 			searchKeyword = null;
 		}
 
-		return articleDao.getArticlesTotalCount(boardId, searchKeyword);
+		return articleDao.getArticlesTotalCount(boardId, searchKeywordTypeCode, searchKeyword);
 	}
 
 	public List<Article> getForPrintArticles(int boardId, String searchKeywordTypeCode, String searchKeyword,
@@ -86,6 +86,6 @@ public class ArticleService {
 		int limitFrom = (page - 1) * itemsCountInAPage;
 		int limitTake = itemsCountInAPage;
 
-		return articleDao.getForPrintArticles(boardId, searchKeyword, limitFrom, limitTake);
+		return articleDao.getForPrintArticles(boardId, searchKeywordTypeCode, searchKeyword, limitFrom, limitTake);
 	}
 }

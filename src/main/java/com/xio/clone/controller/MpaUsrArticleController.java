@@ -44,15 +44,15 @@ public class MpaUsrArticleController {
 
 	// @RequestParam(defaultValue = "1") int page => page값을 입력하지 않아도 기본으로 1이 들어가있게
 	// list에서 받는 데이터들 -> servlet req, boardId, searchKeywordType, searchKeyword,
-	// page번호
+	// page => 1페이지, 2페이지 번호
 	@RequestMapping("/mpaUsr/article/list")
 	public String showList(HttpServletRequest req, @RequestParam(defaultValue = "1") int boardId,
 			String searchKeywordType, String searchKeyword, @RequestParam(defaultValue = "1") int page) {
 		Board board = articleService.getBoardById(boardId);
-
-		// 개발모드일때는 콘솔에 출력되나 실행모드일 때는 출력되지 않음. app~.yml에서 debug를 info로 바꾸면 뜨지않음.
-		// syso와 같으나 log는 더 자세하게 콘솔에 나옴
-		log.debug("searchKeyword : " + searchKeyword);
+//
+//		// 개발모드일때는 콘솔에 출력되나 실행모드일 때는 출력되지 않음. app~.yml에서 debug를 info로 바꾸면 뜨지않음.
+//		// syso와 같으나 log는 더 자세하게 콘솔에 나옴
+//		log.debug("searchKeyword : " + searchKeyword);
 
 		// titleAndBody -> 제목+내용
 		if (Util.isEmpty(searchKeywordType)) {

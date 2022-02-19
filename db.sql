@@ -59,6 +59,15 @@ memberId = 2,
 title = '제목4',
 `body` = '본문4';
 
+##searchKeyword용 데이터
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+boardId = 1,
+memberId = 2,
+title = '가나목5',
+`body` = '본문3';
+
 ## 2번회원이 2번 게시판에 5번글 작성
 INSERT INTO article
 SET regDate = NOW(),
@@ -80,19 +89,19 @@ title = '제목6',
 
 # 게시판 테이블 생성
 CREATE TABLE board (
-    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '번호',
-    regDate DATETIME NOT NULL COMMENT '작성날짜',
-    updateDate DATETIME NOT NULL COMMENT '수정날짜',
-    `name` CHAR(20) NOT NULL UNIQUE COMMENT '이름',
-    `code` CHAR(20) NOT NULL UNIQUE COMMENT '코드',
-    blindStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '블라인드여부',
-    blindDate DATETIME COMMENT '블라인드날짜',
-    delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부',
-    delDate DATETIME COMMENT '삭제날짜',
-    hitCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '조회수',
-    repliesCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '댓글수',
-    likeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '좋아요수',
-    dislikeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '싫어요수'
+id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '게시판번호',
+regDate DATETIME NOT NULL COMMENT '작성날짜',
+updateDate DATETIME NOT NULL COMMENT '수정날짜',
+`name` CHAR(20) NOT NULL UNIQUE COMMENT '이름',
+`code` CHAR(20) NOT NULL UNIQUE COMMENT '코드',
+blindStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '블라인드여부',
+blindDate DATETIME COMMENT '블라인드날짜',
+delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부',
+delDate DATETIME COMMENT '삭제날짜',
+hitCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '조회수',
+repliesCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '댓글수',
+likeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '좋아요수',
+dislikeCount INT(10) UNSIGNED NOT NULL DEFAULT 0 COMMENT '싫어요수'
 );
 
 # 게시판 테스트 데이터 생성
@@ -110,10 +119,3 @@ updateDate = NOW(),
 `name` = 'FREE',
 `code` = 'free';
 
-INSERT INTO article
-SET regDate = NOW(),
-updateDate = NOW(),
-boardId = 1,
-memberId = 2,
-title = '가나목4',
-`body` = '본문4';

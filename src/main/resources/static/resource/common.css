@@ -111,9 +111,9 @@ html>body {
 		margin-right: 0.75rem;
 }
 
-:root { -
-		-card-title_height: 40px; -
-		-card-title_left-btn-cell-width: 50px;
+:root { 
+		 --card-title_height: 40px;
+  --card-title_left-btn-cell-width: 50px;
 }
 
 .card-title {
@@ -186,18 +186,17 @@ html>body .plain-link:hover {
 }
 
 /* 탑바 시작 */
-:root { -
-		-top-bar__color-1: #f1f1f1;
+:root { 
+		 --top-bar__color-1:#f1f1f1;
 }
 
 .top-bar {
 		/* .bg-white */
 		background-color: white;
-		/* .shadow-lg */ -
-		-tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px
-				rgba(0, 0, 0, 0.05);
-		box-shadow: var(- -tw-ring-offset-shadow, 0 0 #0000),
-				var(- -tw-ring-shadow, 0 0 #0000), var(- -tw-shadow);
+		/* .shadow-lg */ 
+		--tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+		
 		height: 3rem;
 }
 
@@ -231,12 +230,12 @@ html>body .plain-link:hover {
 /* 탑바 - 메뉴 박스 - 더보기 그림자 끝 */
 
 /* 탑바 - 메뉴 박스 - 아이템 시작 */
-.top-bar .menu-box-1 ul>li>a>span {
-		white-space: nowrap;
+.top-bar .menu-box-1 ul > li > a > span {
+  white-space:nowrap;
 }
 
-.top-bar .menu-box-1 ul>li:hover>a {
-		background-color: var(- -top-bar__color-1);
+.top-bar .menu-box-1 ul > li:hover > a {
+  background-color:var(--top-bar__color-1);
 }
 /* 탑바 - 메뉴 박스 - 아이템 끝 */
 
@@ -246,16 +245,15 @@ html>body .plain-link:hover {
 }
 
 .top-bar .menu-box-1>ul>li>div {
-		position: fixed;
-		left: 0;
-		width: 100%;
-		display: none;
-		background-color: white;
-		/* .shadow-lg */ -
-		-tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px
-				rgba(0, 0, 0, 0.05);
-		box-shadow: var(- -tw-ring-offset-shadow, 0 0 #0000),
-				var(- -tw-ring-shadow, 0 0 #0000), var(- -tw-shadow);
+		 position:fixed;
+  left:0;
+  width:100%;
+  padding:10px;
+  display:none;
+  background-color:white;
+  /* .shadow-lg */
+  --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .top-bar .menu-box-1>ul>li>div>h1>a {
@@ -267,10 +265,10 @@ html>body .plain-link:hover {
 }
 
 .top-bar .menu-box-1>ul>li>div>ul>li>a {
-		display: flex;
-		background-color: flex;
-		justify-content: center;
-		padding: .5rem 0;
+		 display:flex;
+  background-color:white;
+  justify-content:center;
+  padding:.5rem 0;
 }
 /* 탑바 - 메뉴 박스 - 2차 메뉴 끝 */
 .top-bar--fly {
@@ -285,3 +283,13 @@ html>body .plain-link:hover {
 		padding-top: 4rem;
 }
 /* 탑바 끝 */
+
+.bg-red {
+		background-color: red;
+}
+.bg-gold {
+		background-color: gold;
+}
+.bg-pink {
+		background-color: pink;
+}

@@ -35,8 +35,8 @@
 
         <div class="flex-grow"></div>
 
-        <nav class="menu-box-1">
-          <ul class="flex h-full">
+        <nav class="menu-box-1 ">
+          <ul class="flex h-full ">
             <li>
               <a href="/" class="h-full flex items-center px-5">
                 <span>
@@ -45,14 +45,14 @@
                 <span class="hidden sm:block">&nbsp;HOME</span>
               </a>
             </li>
-            <li>
+            <li class="">
               <a href="#" class="h-full flex items-center px-5">
                 <span>
                   <i class="far fa-newspaper"></i>
                 </span>
                 <span class="hidden md:block">&nbsp;BOARD</span>
               </a>
-              <div>
+              <div class="bg-red">
                 <h1>
                   <a href="#">
                     <span>
@@ -61,6 +61,7 @@
                     <span>&nbsp;BOARD</span>
                   </a>
                 </h1>
+                <hr />
                 <ul>
                   <li>
                     <a href="../article/list?boardId=1">
@@ -96,7 +97,5 @@
 
     </header>
     <div class="title-bar">
-      <div class="mx-auto container">
-        ${pageTitle}
-      </div>
+      <div class="mx-auto container">${pageTitle}</div>
     </div>

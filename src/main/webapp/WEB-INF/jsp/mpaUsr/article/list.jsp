@@ -7,6 +7,15 @@
 <div class="section section-article-list">
   <div class="container mx-auto">
 
+    <div class="return-board">
+      <a href="../article/list?boardId=${board.id}">
+        <span>
+          <i class="far fa-clipboard"></i>
+        </span>
+        <span>&nbsp;${board.name}</span>
+      </a>
+    </div>
+
     <div class="total-items">
       <!-- 총 게시물 -->
       <span>TOTAL ITEMS : </span>

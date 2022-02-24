@@ -52,7 +52,7 @@
                 </span>
                 <span class="hidden md:block">&nbsp;BOARD</span>
               </a>
-              <div class="bg-red">
+              <div class="">
                 <h1>
                   <a href="#">
                     <span>

@@ -107,7 +107,7 @@
       <c:set var="urlBase" value="${urlBase}&searchKeywordType=${param.searchKeywordType}" />
       <c:set var="urlBase" value="${urlBase}&searchKeyword=${param.searchKeyword}" />
 
-      <c:set var="aClassStr" value="px-2 inline-block border border-gray-200 rounded text-lg hover:bg-gray-200"/>
+      <c:set var="aClassStr" value="btn btn-sm"/>
 
       <c:if test="${startPage > 1}">
         <a class="${aClassStr}" href="${urlBase}&page=1">◀◀</a>
@@ -115,7 +115,7 @@
       </c:if>
 
       <c:forEach var="i" begin="${startPage}" end="${endPage}">
-        <a class="${aClassStr} ${page == i ? 'bg-red-50' : ''}" href="${urlBase}&page=${i}">${i}</a>
+        <a class="${aClassStr} ${page == i ? 'bg-indigo-700' : ''}" href="${urlBase}&page=${i}">${i}</a>
       </c:forEach>
 
       <c:if test="${endPage < totalPage}">

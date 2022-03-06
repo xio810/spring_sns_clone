@@ -26,7 +26,7 @@
           <span>작성</span>
         </a>
 
-        <a href="#" class="btn btn-sm mb-1" title="자세히 보기">
+        <a href="../article/list?boardId=${board.id}" class="btn btn-sm mb-1" title="자세히 보기">
           <span>
             <i class="fas fa-list"></i>
           </span>

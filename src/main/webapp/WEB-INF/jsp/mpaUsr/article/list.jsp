@@ -97,7 +97,12 @@
         <hr />
       </c:forEach>
     </div>
-
+    
+    <button class="btn mt-3">
+     <a href="../article/write?boardId=${board.id}">글쓰기</a>
+     <!-- http://localhost:8077/mpaUsr/article/write?boardId=1 --> 
+   </button>
+    
     <div class="pages mb-4 mt-4 text-center">
       <!-- 페이지 메뉴 얼마만큼 보여주는 지 -->
       <c:set var="pageMenuArmSize" value="4" />

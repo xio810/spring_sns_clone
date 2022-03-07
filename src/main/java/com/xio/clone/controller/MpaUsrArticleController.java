@@ -119,7 +119,7 @@ public class MpaUsrArticleController {
 		return "mpaUsr/article/write";
 	}
 
-	@RequestMapping("/usr/article/doWrite")
+	@RequestMapping("/mpaUsr/article/doWrite")
 	@ResponseBody
 	public ResultData doWrite(String title, String body) {
 

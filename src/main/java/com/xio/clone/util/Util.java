@@ -75,6 +75,8 @@ public class Util {
 		return defaultValue;
 	}
 
+	//StringBuilder을 이용하여 Script 사용하기 
+	//메세지 알림 후 뒤로가기 
 	public static String msgAndBack(String msg) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");
@@ -85,6 +87,7 @@ public class Util {
 		return sb.toString();
 	}
 
+	//메세지 알림 후 지정한 경로로
 	public static String msgAndReplace(String msg, String url) {
 		StringBuilder sb = new StringBuilder();
 		sb.append("<script>");

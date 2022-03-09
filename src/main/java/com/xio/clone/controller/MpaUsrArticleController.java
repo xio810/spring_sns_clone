@@ -135,7 +135,7 @@ public class MpaUsrArticleController {
 	    	return msgAndBack(req, writeArticleRd.getMsg());
 	    }
 	    
-	    String replaceUrl = "detail?id=" + writeArticleRd.getBody().get("id");
+	    String replaceUrl = "getArticle?id=" + writeArticleRd.getBody().get("id");
 	    return msgAndReplace(req, writeArticleRd.getMsg(), replaceUrl);
 	}
 
@@ -156,7 +156,7 @@ public class MpaUsrArticleController {
 		return articleService.modifyArticle(id, title, body);
 	}
 
-	@RequestMapping("/usr/article/getArticle")
+	@RequestMapping("/mpaUsr/article/getArticle")
 	@ResponseBody
 	public Article getArticle(Integer id) {
 

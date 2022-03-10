@@ -31,6 +31,7 @@ function ArticleWrite__submitForm(form) {
 <div class="section section-article-list">
   <div class="container mx-auto">
     <form method="POST" action="doWrite" onsubmit="ArticleWrite__submitForm(this); return false;">
+      <input type="hidden" name="boardId" value="${board.id}" />
       <div class="form-control">
         <label class="label"> 제목 </label>
         <input class="input input-bordered w-full" type="text" maxlength="100" name="title" placeholder="제목을 입력해주세요." />

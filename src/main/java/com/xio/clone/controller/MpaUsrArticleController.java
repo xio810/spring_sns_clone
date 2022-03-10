@@ -105,7 +105,7 @@ public class MpaUsrArticleController {
 
 		return msgAndReplace(req, rd.getMsg(), redirectUrl);
 	}
-	
+
 	@RequestMapping("/mpaUsr/article/write")
 	public String showWrite(HttpServletRequest req, @RequestParam(defaultValue = "1") int boardId) {
 		Board board = articleService.getBoardById(boardId);
@@ -120,7 +120,7 @@ public class MpaUsrArticleController {
 	}
 
 	@RequestMapping("/mpaUsr/article/doWrite")
-	public String doWrite(HttpServletRequest req,String title, String body) {
+	public String doWrite(HttpServletRequest req, int boardId, String title, String body) {
 
 		if (Util.isEmpty(title)) {
 			return msgAndBack(req, "제목을 입력해주세요.");
@@ -128,15 +128,18 @@ public class MpaUsrArticleController {
 		if (Util.isEmpty(body)) {
 			return msgAndBack(req, "내용을 입력해주세요.");
 		}
+		
+		//임시 
+		int memberId = 3;
+		
+		ResultData writeArticleRd = articleService.writeArticle(boardId, memberId,title, body);
 
-	    ResultData writeArticleRd = articleService.writeArticle(title, body);
-	    
-	    if(writeArticleRd.isFail()) {
-	    	return msgAndBack(req, writeArticleRd.getMsg());
-	    }
-	    
-	    String replaceUrl = "getArticle?id=" + writeArticleRd.getBody().get("id");
-	    return msgAndReplace(req, writeArticleRd.getMsg(), replaceUrl);
+		if (writeArticleRd.isFail()) {
+			return msgAndBack(req, writeArticleRd.getMsg());
+		}
+
+		String replaceUrl = "getArticle?id=" + writeArticleRd.getBody().get("id");
+		return msgAndReplace(req, writeArticleRd.getMsg(), replaceUrl);
 	}
 
 	@RequestMapping("/usr/article/doModify")

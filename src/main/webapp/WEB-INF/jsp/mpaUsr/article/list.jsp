@@ -91,7 +91,7 @@
           <br>
           updateDate : ${article.updateDate}
           <br>
-          TITLE : ${article.title}
+          <a href="../article/detail?id=${article.id}">TITLE : ${article.title}</a>
           <br>
         </div>
         <hr />

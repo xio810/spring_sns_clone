@@ -85,14 +85,16 @@
       </c:if>
       <c:forEach items="${articles}" var="article">
         <div>
+        <a href="../article/detail?id=${article.id}">
           ID : ${article.id}
           <br>
           regDate : ${article.regDate}
           <br>
           updateDate : ${article.updateDate}
           <br>
-          <a href="../article/detail?id=${article.id}">TITLE : ${article.title}</a>
+          TITLE : ${article.title}</a>
           <br>
+          </a>
         </div>
         <hr />
       </c:forEach>

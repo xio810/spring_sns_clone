@@ -66,7 +66,8 @@ updateDate = NOW(),
 boardId = 1,
 memberId = 2,
 title = '가나목5',
-`body` = '본문3';
+`body` = '본문3',
+hitCount = 19;
 
 ## 2번회원이 2번 게시판에 5번글 작성
 INSERT INTO article
@@ -92,8 +93,8 @@ CREATE TABLE board (
 id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT COMMENT '게시판번호',
 regDate DATETIME NOT NULL COMMENT '작성날짜',
 updateDate DATETIME NOT NULL COMMENT '수정날짜',
-`name` CHAR(20) NOT NULL UNIQUE COMMENT '이름',
-`code` CHAR(20) NOT NULL UNIQUE COMMENT '코드',
+`name` CHAR(20) NOT NULL UNIQUE COMMENT '게시판이름',
+`code` CHAR(20) NOT NULL UNIQUE COMMENT '게시판코드',
 blindStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '블라인드여부',
 blindDate DATETIME COMMENT '블라인드날짜',
 delStatus TINYINT(1) UNSIGNED NOT NULL DEFAULT 0 COMMENT '삭제여부',
@@ -119,3 +120,6 @@ updateDate = NOW(),
 `name` = 'FREE',
 `code` = 'free';
 
+use love;
+show tables;
+SELECT * from birthday;

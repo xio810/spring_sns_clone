@@ -50,7 +50,7 @@
 
                 <div>
                   <span class="badge badge-accent">작성자</span>
-                  <span>홍길동</span>
+                  <span>${article.extra__writerName}</span>
                 </div>
 
                 <div>
@@ -69,7 +69,7 @@
                 <div class="mt-3">
                   <img class="rounded" src="https://i.pravatar.cc/250?img=37" alt="">
                 </div>
-                <div class="mt-3">${article.body}</div>
+                <div class="mt-3"> ${article.bodyForPrint}</div>
               </div>
             </div>
           </div>

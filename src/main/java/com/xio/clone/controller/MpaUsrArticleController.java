@@ -24,39 +24,39 @@ public class MpaUsrArticleController {
 	@Autowired
 	private ArticleService articleService;
 
-	// 알림 후 뒤로가기
-	private String msgAndBack(HttpServletRequest req, String msg) {
-		req.setAttribute("msg", msg);
-		// historyBack이 true면 실행
-		req.setAttribute("historyBack", true);
+//	// 알림 후 뒤로가기
+//	private String msgAndBack(HttpServletRequest req, String msg) {
+//		req.setAttribute("msg", msg);
+//		// historyBack이 true면 실행
+//		req.setAttribute("historyBack", true);
+//
+//		return "common/redirect";
+//	}
+//
+//	// 알림 후 게시판번호로 이동
+//	private String msgAndReplace(HttpServletRequest req, String msg, String replaceUrl) {
+//		req.setAttribute("msg", msg);
+//		// boardId에 맞는 게시판번호로 이동
+//		req.setAttribute("replaceUrl", replaceUrl);
+//
+//		return "common/redirect";
+//	}
 
-		return "common/redirect";
-	}
-
-	// 알림 후 게시판번호로 이동
-	private String msgAndReplace(HttpServletRequest req, String msg, String replaceUrl) {
-		req.setAttribute("msg", msg);
-		// boardId에 맞는 게시판번호로 이동
-		req.setAttribute("replaceUrl", replaceUrl);
-
-		return "common/redirect";
-	}
-	
 	@RequestMapping("/mpaUsr/article/detail")
-    public String showDetail(HttpServletRequest req, int id) {
-        Article article = articleService.getForPrintArticleById(id);
+	public String showDetail(HttpServletRequest req, int id) {
+		Article article = articleService.getForPrintArticleById(id);
 
-        if (article == null) {
-            return msgAndBack(req, id + "번 게시물이 존재하지 않습니다.");
-        }
+		if (article == null) {
+			return Util.msgAndBack(req, id + "번 게시물이 존재하지 않습니다.");
+		}
 
-        Board board = articleService.getBoardById(article.getBoardId());
+		Board board = articleService.getBoardById(article.getBoardId());
 
-        req.setAttribute("article", article);
-        req.setAttribute("board", board);
+		req.setAttribute("article", article);
+		req.setAttribute("board", board);
 
-        return "mpaUsr/article/detail";
-    }
+		return "mpaUsr/article/detail";
+	}
 
 	// @RequestParam(defaultValue = "1") int page => page값을 입력하지 않아도 기본으로 1이 들어가있게
 	// list에서 받는 데이터들 -> servlet req, boardId, searchKeywordType, searchKeyword,
@@ -76,7 +76,7 @@ public class MpaUsrArticleController {
 		}
 
 		if (board == null) {
-			return msgAndBack(req, boardId + "번 게시판은 없습니다.");
+			return Util.msgAndBack(req, boardId + "번 게시판은 없습니다.");
 		}
 
 		req.setAttribute("board", board);
@@ -109,17 +109,17 @@ public class MpaUsrArticleController {
 	public String doDelete(HttpServletRequest req, Integer id) {
 
 		if (id == null) {
-			return msgAndBack(req, "id를 입력해주세요.");
+			return Util.msgAndBack(req, "id를 입력해주세요.");
 		}
 
 		ResultData rd = articleService.deleteArticle(id);
 
 		if (rd.isFail()) {
-			return msgAndBack(req, rd.getMsg());
+			return Util.msgAndBack(req, rd.getMsg());
 		}
 		String redirectUrl = "../article//list?boardId=" + rd.getBody().get("boardId");
 
-		return msgAndReplace(req, rd.getMsg(), redirectUrl);
+		return Util.msgAndReplace(req, rd.getMsg(), redirectUrl);
 	}
 
 	@RequestMapping("/mpaUsr/article/write")
@@ -127,7 +127,7 @@ public class MpaUsrArticleController {
 		Board board = articleService.getBoardById(boardId);
 
 		if (board == null) {
-			return msgAndBack(req, boardId + "번 게시판이 존재하지 않습니다.");
+			return Util.msgAndBack(req, boardId + "번 게시판이 존재하지 않습니다.");
 		}
 
 		req.setAttribute("board", board);
@@ -139,23 +139,23 @@ public class MpaUsrArticleController {
 	public String doWrite(HttpServletRequest req, int boardId, String title, String body) {
 
 		if (Util.isEmpty(title)) {
-			return msgAndBack(req, "제목을 입력해주세요.");
+			return Util.msgAndBack(req, "제목을 입력해주세요.");
 		}
 		if (Util.isEmpty(body)) {
-			return msgAndBack(req, "내용을 입력해주세요.");
+			return Util.msgAndBack(req, "내용을 입력해주세요.");
 		}
-		
-		//임시 
+
+		// 임시
 		int memberId = 3;
-		
-		ResultData writeArticleRd = articleService.writeArticle(boardId, memberId,title, body);
+
+		ResultData writeArticleRd = articleService.writeArticle(boardId, memberId, title, body);
 
 		if (writeArticleRd.isFail()) {
-			return msgAndBack(req, writeArticleRd.getMsg());
+			return Util.msgAndBack(req, writeArticleRd.getMsg());
 		}
 
 		String replaceUrl = "detail?id=" + writeArticleRd.getBody().get("id");
-		return msgAndReplace(req, writeArticleRd.getMsg(), replaceUrl);
+		return Util.msgAndReplace(req, writeArticleRd.getMsg(), replaceUrl);
 	}
 
 	@RequestMapping("/usr/article/doModify")

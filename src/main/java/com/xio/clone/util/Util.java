@@ -346,4 +346,23 @@ public class Util {
 	public static String getNewUriAndEncoded(String uri, String paramName, String pramValue) {
 		return getUrlEncoded(getNewUrl(uri, paramName, pramValue));
 	}
+	
+	// 알림 후 뒤로가기
+	public static String msgAndBack(HttpServletRequest req, String msg) {
+		req.setAttribute("msg", msg);
+		// historyBack이 true면 실행
+		req.setAttribute("historyBack", true);
+
+		return "common/redirect";
+	}
+
+	// 알림 후 게시판번호로 이동
+	public static String msgAndReplace(HttpServletRequest req, String msg, String replaceUrl) {
+		req.setAttribute("msg", msg);
+		// boardId에 맞는 게시판번호로 이동
+		req.setAttribute("replaceUrl", replaceUrl);
+
+		return "common/redirect";
+	}
+
 }

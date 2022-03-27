@@ -11,22 +11,19 @@ import com.xio.clone.dto.ResultData;
 @Service
 public class MemberService {
 	@Autowired
-	private ArticleDao articleDao;
 	private MemberDao memberDao;
-	
-	
-	public Member getMemberByLoginId(String loginId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+	}
 
 	public ResultData join(String loginId, String loginPw, String name, String nickname, String cellphoneNo,
 			String email) {
-		// TODO Auto-generated method stub
-		return null;
+
+		memberDao.join(loginId, loginPw, name, nickname, cellphoneNo, email);
+		int id = memberDao.getLastInsertId();
+
+		return new ResultData("S-1", "회원가입이 완료되었습니다.", "id", id);
 	}
-	
-	
 
 }

@@ -1,15 +1,18 @@
 package com.xio.clone.dao;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import com.xio.clone.dto.Member;
 
 @Mapper
 public interface MemberDao {
 
-	Member getMemberByLoginId(String loginId);
+	Member getMemberByLoginId(@Param("loginId")String loginId);
+
+	Member getMemberById(@Param("id") int id);
+
+	void join(@Param("loginId")String loginId, @Param("loginPw") String loginPw, @Param("name") String name, @Param("nickname") String nickname, @Param("cellphoneNo")String cellphoneNo, @Param("email") String email);
 
 	int getLastInsertId();
-
-	void join(String loginId, String loginPw, String name, String nickname, String cellphoneNo, String email);
 }

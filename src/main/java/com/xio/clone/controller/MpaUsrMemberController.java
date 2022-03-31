@@ -5,7 +5,9 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.xio.clone.dto.Article;
 import com.xio.clone.dto.Member;
 import com.xio.clone.dto.ResultData;
 import com.xio.clone.service.MemberService;
@@ -38,6 +40,11 @@ public class MpaUsrMemberController {
 		}
 
 		return Util.msgAndReplace(req, joinRd.getMsg(), "/");
+	}
+
+	@RequestMapping("/mpaUsr/member/login")
+	public String showLogin(HttpServletRequest req) {
+		return "mpaUsr/member/login";
 	}
 
 }
